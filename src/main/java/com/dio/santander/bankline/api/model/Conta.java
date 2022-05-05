@@ -8,7 +8,7 @@ public class Conta {
 	
 	@Column(name = "conta_numero")
 	private long numero;
-	@Column(name = "conta_nome")
+	@Column(name = "conta_saldo")
 	private double saldo;
 	
 	public long getNumero() {

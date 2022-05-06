@@ -13,7 +13,12 @@ import com.dio.santander.bankline.api.dto.NovaMovimentacao;
 import com.dio.santander.bankline.api.model.Movimentacao;
 import com.dio.santander.bankline.api.repository.MovimentacaoRepository;
 import com.dio.santander.bankline.api.service.MovimentacaoService;
+import com.dio.santander.bankline.api.swagger.Messages;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = Messages.SWAGGER_TAG_MOVIMENTACAO_ENDPOINT)
 @RestController
 @RequestMapping("movimentacoes")
 public class MovimentacaoController {
@@ -24,11 +29,13 @@ public class MovimentacaoController {
 	@Autowired
 	private MovimentacaoService movimentacaoService;
 	
+	@Operation(description = Messages.SWAGGER_GET_ALL)
 	@GetMapping
 	public List<Movimentacao> findAll(){
 		return movimentacaoRespository.findAll();
 	}
 	
+	@Operation(description = Messages.SWAGGER_INSERT)
 	@PostMapping
 	public void save(@RequestBody NovaMovimentacao movimentacao) {
 		movimentacaoService.save(movimentacao);
